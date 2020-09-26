@@ -16,27 +16,26 @@ namespace EmployeeWage
 
         static int EmployeeDailyWageComputation()
         {
-            int IS_FULL_TIME = 1;
-            int IS_PRESENT = 1;
             int EMP_RATE_PER_HOUR = 20;
             int empHrs = 0;
             Random random = new Random();
-            int empCheck = random.Next(0,2);
-            int empType = random.Next(0,2);
-            if (empCheck == IS_PRESENT)
+            int empCheck = random.Next(0, 3);
+            //0. Full time present.
+            //1. Part time present.
+            //2. Absent
+            switch(empCheck)
             {
-                if (empType == IS_FULL_TIME)
-                {
+                case 0:
                     empHrs = 8;
-                }
-                else
-                {
+                    break;
+                case 1:
                     empHrs = 4;
-                }
-            }
-            else
-            {
-                empHrs = 0;
+                    break;
+                case 2:
+                    empHrs = 0;
+                    break;
+                default:
+                    break;
             }
             return empHrs * EMP_RATE_PER_HOUR;
         }
